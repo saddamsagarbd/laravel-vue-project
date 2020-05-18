@@ -47,8 +47,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
     <a href="index3.html" class="brand-link">
-      <img src="./img/logo.png" alt="Logo" class="brand-image img-circle elevation-3"
-           style="opacity: .8">
+      <!-- <img src="./img/logo.png" alt="Logo" class="brand-image img-circle elevation-3"
+           style="opacity: .8"> -->
       <span class="brand-text font-weight-light">LaraVueJs</span>
     </a>
 
@@ -57,7 +57,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
-          <img src="./img/profile.png" class="img-circle elevation-2" alt="User Image">
+          <!-- <img src="./img/profile.png" class="img-circle elevation-2" alt="User Image"> -->
         </div>
         <div class="info">
           <a href="#" class="d-block">{{ Auth::user()->name }}</a>
@@ -90,8 +90,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <ul class="nav nav-treeview">
               <li class="nav-item">
                 <router-link to="/users" class="nav-link">
-                  <i class="fas fa-users nav-icon"></i>
-                  <p>Users</p>
+                  <i class="nav-icon fas fa-users white"></i>
+                  <p>
+                    Users
+                  </p>
                 </router-link>
               </li>
             </ul>
