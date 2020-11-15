@@ -9,6 +9,8 @@ require('./bootstrap');
 
 window.Vue = require('vue');
 
+import moment from 'moment'
+
 import { Form, HasError, AlertError } from 'vform'
 
 window.Form = Form;
@@ -16,22 +18,54 @@ window.Form = Form;
 Vue.component(HasError.name, HasError)
 Vue.component(AlertError.name, AlertError)
 
+import VueProgressBar from 'vue-progressbar'
+
+Vue.use(VueProgressBar, {
+  color: 'rgb(143, 255, 199)',
+  failedColor: 'red',
+  height: '15px'
+})
+
+import Swal from 'sweetalert2'
+
+window.swal = Swal
+
+const Toast = Swal.mixin({
+  toast: true,
+  position: 'top-end',
+  showConfirmButton: false,
+  timer: 3000
+})
+
+window.toast = Toast
+window.Fire = new Vue();
+
 import VueRouter from 'vue-router'
 
 Vue.use(VueRouter)
+
+Vue.filter('capitalize', function(text){
+	return text.charAt(0).toUpperCase() + text.slice(1);
+
+});
+
+Vue.filter('dateFormat', function(date){
+	return moment(date).format('MMMM Do YYYY');
+});
 
 //vue route code here
 
 let routes = [
   { path: '/dashboard', component: require('./components/Dashboard.vue').default },
   { path: '/users', component: require('./components/Users.vue').default },
+  { path: '/investors', component: require('./components/Investors.vue').default },
   { path: '/profile', component: require('./components/Profile.vue').default }
 ]
 
 
 const router = new VueRouter({
 	mode:'history',
-  routes // short for `routes: routes`
+  	routes // short for `routes: routes`
 })
 /**
  * The following block of code may be used to automatically register your

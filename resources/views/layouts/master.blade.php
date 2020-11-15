@@ -13,7 +13,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <!-- CSRF Token -->
   <meta name="csrf-token" content="{{ csrf_token() }}">
 
-  <title>LaraVueJs | Start</title>
+  <title>Spire CRM | SDL</title>
 
   <link rel="stylesheet" type="text/css" href="/css/app.css">
 </head>
@@ -47,9 +47,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
     <a href="index3.html" class="brand-link">
-      <!-- <img src="./img/logo.png" alt="Logo" class="brand-image img-circle elevation-3"
+      <!-- <img src="./img/spire-logo.png" alt="Logo" class="brand-image elevation-3"
            style="opacity: .8"> -->
-      <span class="brand-text font-weight-light">LaraVueJs</span>
+      <span class="brand-text font-weight-light">Spire Development Ltd.</span>
     </a>
 
     <!-- Sidebar -->
@@ -89,10 +89,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <router-link to="/users" class="nav-link">
+                <router-link to="/investors" class="nav-link">
                   <i class="nav-icon fas fa-users white"></i>
                   <p>
-                    Users
+                    Investors
                   </p>
                 </router-link>
               </li>
@@ -108,8 +108,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
           </li>
           <li class="nav-item">
             <a class="nav-link" href="{{ route('logout') }}"
-               onclick="event.preventDefault();
-                             document.getElementById('logout-form').submit();">
+               onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                 <i class="nav-icon fas fa-power-off red"></i>
                 <p>
                   {{ __('Logout') }}
@@ -133,6 +132,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
       <div class="container-fluid">
 
         <router-view></router-view>
+        <vue-progress-bar></vue-progress-bar>
         
       </div><!-- /.container-fluid -->
     </div>

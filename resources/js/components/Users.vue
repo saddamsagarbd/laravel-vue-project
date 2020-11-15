@@ -19,16 +19,16 @@
                         <th>ID</th>
                         <th>Name</th>
                         <th>Email</th>
-                        <th>Status</th>
+                        <th>Registration At</th>
                         <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>
-                <tr>
-                  <td>183</td>
-                  <td>John Doe</td>
-                  <td>11-7-2014</td>
-                  <td><span class="label label-success">Approved</span></td>
+                <tr v-for=" user in users" :key="user.id">
+                  <td>{{ user.id }}</td>
+                  <td>{{ user.name | capitalize }}</td>
+                  <td>{{ user.email }}</td>
+                  <td>{{ user.created_at | dateFormat }}</td>
                   <td>
                     <a href="#"><i class="fa fa-edit fa-fw blue"></i></a>
                     <a href="#"><i class="fa fa-trash fa-fw red"></i></a>
@@ -90,6 +90,7 @@
     export default {
         data(){
             return{
+                users: {},
                 form:new Form({
                     name: '',
                     email: '',
@@ -98,13 +99,26 @@
             }
         },
         methods: {
+            loadUsers(){
+              axios.get('api/user').then(({data})=>(this.users = data.data));
+            },
             createUser(){
+                this.$Progress.start();
                 this.form.post('api/user');
-
+                $("#addUserModal").modal("toggle");
+                Fire.$emit("AfterCreate");
+                toast.fire({
+                  icon: 'success',
+                  title: 'User created successfully'
+                })
+                this.$Progress.finish();
             }
         },
-        mounted() {
-            console.log('Component mounted.')
+        created() {
+            this.loadUsers();
+            Fire.$on("AfterCreate", ()=>{
+              this.loadUsers();
+            });
         }
     }
 </script>
